@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2015-07-10
+  task: MyString
+  hours_worked: 9.99
+  notes: MyText
+
+two:
+  date: 2015-07-10
+  task: MyString
+  hours_worked: 9.99
+  notes: MyText

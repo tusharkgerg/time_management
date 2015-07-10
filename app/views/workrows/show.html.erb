@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @workrow.date %>
+</p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @workrow.task %>
+</p>
+
+<p>
+  <strong>Hours worked:</strong>
+  <%= @workrow.hours_worked %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @workrow.notes %>
+</p>
+
+<%= link_to 'Edit', edit_workrow_path(@workrow) %> |
+<%= link_to 'Back', workrows_path %>
