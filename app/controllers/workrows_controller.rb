@@ -1,10 +1,11 @@
 class WorkrowsController < ApplicationController
   before_action :set_workrow, only: [:show, :edit, :update, :destroy]
-
+  
+  before_action :authenticate_user!
   # GET /workrows
   # GET /workrows.json
   def index
-    @workrows = Workrow.all
+    @workrows = current_user.workrows.all
   end
 
   # GET /workrows/1
@@ -14,7 +15,7 @@ class WorkrowsController < ApplicationController
 
   # GET /workrows/new
   def new
-    @workrow = Workrow.new
+    @workrow = current_user.workrows.new
   end
 
   # GET /workrows/1/edit
@@ -24,7 +25,7 @@ class WorkrowsController < ApplicationController
   # POST /workrows
   # POST /workrows.json
   def create
-    @workrow = Workrow.new(workrow_params)
+    @workrow = current_user.workrows.new(workrow_params)
 
     respond_to do |format|
       if @workrow.save
@@ -64,7 +65,7 @@ class WorkrowsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_workrow
-      @workrow = Workrow.find(params[:id])
+      @workrow = current_user.workrows.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
