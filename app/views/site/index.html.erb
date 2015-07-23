@@ -1,0 +1,35 @@
+<% if user_signed_in? %>
+  <h2>Welcome <%= current_user.email%></h2>
+  <p> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %></p>
+  <table style="width: 100%">
+    <thead>
+      <tr>
+        <th>Url</th>
+      </tr>
+    </thead>
+  </table>
+ 
+ 
+<% else %>
+
+<%= form_for(:user, :url => session_path(:user)) do |f| %>
+  <%= f.text_field :email %>
+  <%= f.password_field :password %>
+  <%= f.check_box :remember_me %>
+  <%= f.label :remember_me %>
+  <%= f.submit 'Sign in' %>
+  <%= link_to "Forgot your password?", new_password_path(:user) %>
+<% end %>
+<%end%>
+
+
+<div>
+  <label>Name:</label>
+  <input type="text" ng-model="yourName" placeholder="Enter a name here">
+  <hr>
+  <h1>Hello {{yourName}}!</h1>
+</div>
+
+<div ng-controller="TimeManagementCtlr">
+  <h1>Message: {{message}}</h1>
+</div>
