@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
+  #get 'site/index'
+
   devise_for :users
   resources :workrows
+  get '/userpanel/show', to: 'users#show'
 
-  root to: 'workrows#index'
+    scope :api do
+    get "/timemanagement(.:format)" => "timemanagement#index"
+    get "/timemanagement/:id(.:format)" => "timemanagement#show"
+  end
+
+  root to: 'site#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

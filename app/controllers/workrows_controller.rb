@@ -2,6 +2,7 @@ class WorkrowsController < ApplicationController
   before_action :set_workrow, only: [:show, :edit, :update, :destroy]
   
   before_action :authenticate_user!
+
   # GET /workrows
   # GET /workrows.json
   def index
@@ -10,8 +11,17 @@ class WorkrowsController < ApplicationController
 
   # GET /workrows/1
   # GET /workrows/1.json
-  def show
+  def show_for_user
+    params.require(:user_email)
+    
+    raise 'Must be manager or admin to access this' unless 
+    (current_user.role.name == 'manager' || current_user.role.name == 'admin')
+
+    @workrow = User.find_by_email(params[:user_email]).workrows
+
+    redirect_to :WorkrowsController, :action => show
   end
+
 
   # GET /workrows/new
   def new

@@ -43,5 +43,9 @@ group :development, :test do
   gem 'spring'
   gem 'devise', '~> 3.4.0'
 
+  gem 'foundation-rails'
+  gem 'simple_form'
+  gem 'rspec-rails'
+
 end
 

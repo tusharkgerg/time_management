@@ -1,33 +1,15 @@
-<%= form_for(@workrow) do |f| %>
-  <% if @workrow.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@workrow.errors.count, "error") %> prohibited this workrow from being saved:</h2>
+<%= simple_form_for(@workrow) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @workrow.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="form-inputs">
+    <%= f.input :date, label: 'Date', as: :date %>
+    <%= f.input :task, label: 'Task' %>
+    <%= f.input :hours_worked, label: 'Hours worked' %>
+    <%= f.input :notes, label: 'Notes' %>
 
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_select :date %>
   </div>
-  <div class="field">
-    <%= f.label :task %><br>
-    <%= f.text_field :task %>
-  </div>
-  <div class="field">
-    <%= f.label :hours_worked %><br>
-    <%= f.text_field :hours_worked %>
-  </div>
-  <div class="field">
-    <%= f.label :notes %><br>
-    <%= f.text_area :notes %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>

@@ -12,5 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= require foundation
+//= require app
+//= require_tree ./angular
+// Add the following two lines
+
+$(function(){ $(document).foundation(); });
